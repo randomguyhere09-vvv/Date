@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For cutuuu ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .card {
+    background: white;
+    padding: 30px;
+    max-width: 650px;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    color: #ff3f6c;
+    margin-bottom: 10px;
+  }
+
+  #typing {
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 150px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: #ff3f6c;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    position: relative;
+    height: 100px;
+  }
+
+  button {
+    padding: 14px 30px;
+    font-size: 17px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    transition: 0.2s ease;
+  }
+
+  #yesBtn {
+    background: #ff3f6c;
+    color: white;
+    left: 35%;
+  }
+
+  #noBtn {
+    background: #eee;
+    color: #555;
+    left: 55%;
+  }
+
+  .final {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff3f6c;
+    font-weight: bold;
+  }
+
+  .heart {
+    position: absolute;
+    color: #ff3f6c;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-800px);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Hey cutuuu ❤️</h1>
+
+  <div id="typing"></div>
+
+  <h2>Will you go out on a date with me? 💕</h2>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="sayYes()">Yes 💖</button>
+    <button id="noBtn" onmouseover="escapeNo()">No 🙈</button>
+  </div>
+
+  <div class="final" id="finalMessage">
+    I knew it 😌❤️  
+    You just made my heart do happy dances.
+  </div>
+</div>
+
+<script>
+  /* Typing effect */
+  const text = `From the very first day I met you at the office, something felt different.
+At first it was just small moments — a smile, a conversation, the way you were just… you.
+Slowly, without me even realizing it, you became someone special to me.
+Day by day, I didn’t just like you.
+I fell for you.
+The only thing i look out in my life now is to be with you , love you, take good care of your, and be with you for the rest of my lifeeeeee..
+Very, very, very much.
+And honestly, cutuuu, I couldn’t keep this in my heart anymore.`;
+
+  let i = 0;
+  function typeText() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeText, 35);
+    }
+  }
+  typeText();
+
+  /* No button mischief */
+  function escapeNo() {
+    const noBtn = document.getElementById("noBtn");
+    const card = document.querySelector(".card");
+
+    const maxX = card.offsetWidth - noBtn.offsetWidth;
+    const maxY = card.offsetHeight - noBtn.offsetHeight;
+
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+    noBtn.style.transform = "scale(0.9)";
+  }
+
+  /* Yes celebration */
+  function sayYes() {
+    document.getElementById("finalMessage").style.display = "block";
+    for (let i = 0; i < 40; i++) {
+      createHeart();
+    }
+  }
+
+  /* Floating hearts */
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "0px";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 800);
+</script>
+
+</body>
+</html>
